@@ -39,8 +39,8 @@ def get_user_info(access_token):
 
 def handle_redirect():
     if not st.session_state.get('access_token'):
-        code = st.experimental_get_query_params().get('code')
+        code = st.query_params.to_dict().get('code')
         if code:
             access_token = get_token_from_code(code)
             st.session_state['access_token'] = access_token
-            st.experimental_set_query_params()
+            st.query_params.to_dict()
