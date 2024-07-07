@@ -14,7 +14,7 @@ def setup_page(page_title):
         }
     )
 
-    if st.experimental_get_query_params().get('code'):
+    if st.query_params.to_dict().get('code'):
         security.handle_redirect()
 
     access_token = st.session_state.get('access_token')
